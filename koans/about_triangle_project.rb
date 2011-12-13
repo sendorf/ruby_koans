@@ -4,15 +4,20 @@ require File.expand_path(File.dirname(__FILE__) + '/edgecase')
 require 'triangle.rb'
 
 class AboutTriangleProject < EdgeCase::Koan
-def triangle(a, b, c)
-	if(a==b && b==c)
-	:equilateral
-	elsif (a==b || b==c || a==c)
-	:isosceles
-	else
-	:scalene
-	end
-end
+
+  def triangle(a, b, c)
+    if(a<=0 || b<=0 || c<=0)
+     raise TriangleError.new("")
+    elsif(a==b && b==c)
+      :equilateral
+    elsif(a==b || b==c || a==c)
+      :isosceles
+    elsif(a!=b && b!=c && c!=a)
+      :scalene
+    elsif(a+b <= c || b+c <= a || c+a <=b)
+     raise TriangleError.new("")
+    end
+  end
 
   def test_equilateral_triangles_have_equal_sides
     assert_equal :equilateral, triangle(2, 2, 2)
