@@ -13,6 +13,19 @@ class AboutDiceProject < EdgeCase::Koan
     assert_not_nil dice
   end
 
+  class DiceSet
+    attr_reader :values
+    def roll(size)
+      @values = [];
+      i=0
+      while(i<size)
+        rand = Random.rand(5)
+        @values << rand+1
+        i= i +1
+      end
+    end
+  end
+
   def test_rolling_the_dice_returns_a_set_of_integers_between_1_and_6
     dice = DiceSet.new
 
