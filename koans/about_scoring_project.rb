@@ -31,6 +31,35 @@ require File.expand_path(File.dirname(__FILE__) + '/edgecase')
 
 def score(dice)
   # You need to write this method
+  if(dice.empty?) 
+    0
+  else
+    result = 0
+    visited = []
+    repeted = nil
+    dice.each do |item|
+      equal = dice.find_all {|item1| (item == item1) }
+      repeated= visited.find {|item1| (item == item1) }
+      if(!repeated)
+        visited << item
+        total = equal.length
+        while(total !=0 && total>=3)
+          total=total-3
+          if(item!=1)
+            result=result + item*100
+          else
+            result=result+1000
+          end
+        end
+        if(item == 1)
+          result=result+(100*total)
+        elsif(item == 5)
+          result=result+(50*total)
+        end
+      end
+    end
+    result
+  end
 end
 
 class AboutScoringProject < EdgeCase::Koan
