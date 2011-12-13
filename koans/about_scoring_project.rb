@@ -36,7 +36,6 @@ def score(dice)
   else
     result = 0
     visited = []
-    repeted = nil
     dice.each do |item|
       equal = dice.find_all {|item1| (item == item1) }
       repeated= visited.find {|item1| (item == item1) }
