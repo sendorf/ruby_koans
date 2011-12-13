@@ -19,7 +19,7 @@ class AboutDiceProject < EdgeCase::Koan
       @values = [];
       i=0
       while(i<size)
-        rand = Random.rand(5)
+        rand = Random.rand(6)
         @values << rand+1
         i= i +1
       end
